@@ -1,6 +1,6 @@
-﻿namespace ApiModuloFinal.ViewModel
+﻿namespace ApiModuloFinal.DTO
 {
-    public class ClienteViewModel
+    public class ClienteDTO
     {
         public string Nome { get;  set; }
         public string CPF { get;  set; }
