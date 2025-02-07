@@ -1,4 +1,4 @@
-﻿namespace ApiModuloFinal.Infra.Middleware
+﻿namespace ApiModuloFinal.Middleware
 {
     public class ExceptionMiddleware
     {

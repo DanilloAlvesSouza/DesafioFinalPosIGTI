@@ -1,22 +1,22 @@
 ﻿using ApiModuloFinal.Model;
+using ApiModuloFinal.Repository;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 
-namespace ApiModuloFinal.Infra
+namespace ApiModuloFinal.Service
 {
-    public class ClienteRepository : IClienteRepository
+    public class ClienteService : IClienteService
     {
         private readonly ConnectionContext _context = new ConnectionContext();
-        private readonly ILogger<ClienteRepository> _logger;
+        private readonly ILogger<ClienteService> _logger;
 
         public void Update(Cliente cliente)
         {
             _context.Update(cliente);
             _context.SaveChanges();
         }
-        public void Count()
+        public int Count()
         {
-            throw new NotImplementedException();
+            return _context.Clientes.Count();
         }
 
         public void Create(Cliente cliente)
@@ -25,9 +25,11 @@ namespace ApiModuloFinal.Infra
             _context.SaveChanges();
         }
 
-        public void Delete(Cliente cliente)
+        public void Delete(int id)
         {
-            _context.Remove(cliente);
+
+            var cliente = GetByID(id);
+            _context.Clientes.Remove(cliente);
             _context.SaveChanges();
         }
 
@@ -56,8 +58,13 @@ namespace ApiModuloFinal.Infra
 
         public Cliente GetByName(string nome)
         {
-            return _context.Clientes.Find(nome);
-        }
 
+             var cliente = _context.Clientes.Find(nome);
+
+            if (cliente is null) throw new KeyNotFoundException("Cliente Não encontrado");
+
+            return cliente;
+        }
+    
     }
 }

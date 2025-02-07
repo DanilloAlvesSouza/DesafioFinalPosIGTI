@@ -1,6 +1,5 @@
-using ApiModuloFinal.Infra;
-using ApiModuloFinal.Infra.Middleware;
-using ApiModuloFinal.Model;
+using ApiModuloFinal.Middleware;
+using ApiModuloFinal.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
+builder.Services.AddTransient<IClienteService, ClienteService>();
 
 var app = builder.Build();
 

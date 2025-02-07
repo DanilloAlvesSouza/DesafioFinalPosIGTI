@@ -1,11 +1,13 @@
-﻿namespace ApiModuloFinal.Model
+﻿using ApiModuloFinal.Model;
+
+namespace ApiModuloFinal.Service
 {
-    public interface IClienteRepository
+    public interface IClienteService
     {
         void Create(Cliente cliente);
         void Update(Cliente cliente);
-        void Delete(Cliente cliente);
-        void Count();
+        void Delete(int id);
+        int Count();
         List<Cliente> GetAll();
         Cliente GetByID(int id);
         Cliente GetByName(string name);

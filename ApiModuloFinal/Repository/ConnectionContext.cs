@@ -1,7 +1,7 @@
 ﻿using ApiModuloFinal.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiModuloFinal.Infra
+namespace ApiModuloFinal.Repository
 {
     public class ConnectionContext : DbContext
     {
