@@ -56,15 +56,12 @@ namespace ApiModuloFinal.Service
             }
         }
 
-        public Cliente GetByName(string nome)
+        public List<Cliente> GetByName(string nome)
         {
-
-             var cliente = _context.Clientes.Find(nome);
-
-            if (cliente is null) throw new KeyNotFoundException("Cliente Não encontrado");
-
-            return cliente;
+            return _context.Clientes
+                           .Where(c => c.Nome.Contains(nome))
+                           .ToList();
         }
-    
-    }
+
+}
 }

@@ -10,6 +10,6 @@ namespace ApiModuloFinal.Service
         int Count();
         List<Cliente> GetAll();
         Cliente GetByID(int id);
-        Cliente GetByName(string name);
+        List<Cliente> GetByName(string name);
     }
 }
